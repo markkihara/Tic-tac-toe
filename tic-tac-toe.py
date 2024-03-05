@@ -1,9 +1,11 @@
-'''A tic-tac-toe game'''
-#Draws the board to the screen
+'''A command line  tic-tac-toe game'''
+
 #Game board 3rows and 3 columns
 board=[[1,2,3],[4,5,6],[7,8,9]]
 player1= 'X'
 player2= 'O'
+
+#Draws the board to the screen
 def draw_board(board):
     for row in board:
         print(*row,sep='|')
@@ -16,7 +18,7 @@ def check_valid_move(move,board)-> bool:
         return False
     #validates if the move location is not occupied in the board
     if move not in str(board):
-        print("Invalid move. The spot has been accupied")
+        print("Invalid move. The spot has been occupied")
         return False
         
     return True
@@ -30,7 +32,7 @@ def insert_player(move,player,board):
                 
 #checks if there is a winner. Return a string if there is a winner or none if no winner            
 def check_winner(board)->str or None :
-    #comnination to get boards values based on row, column, diagonal
+    #comnination to get board values based on row, column, diagonal
     combinations = [
     [(0,0),(0,1),(0,2)],#1,2,3
     [(1,0),(1,1),(1,2)],#4,5,6
@@ -47,7 +49,7 @@ def check_winner(board)->str or None :
             values.append(board[row][col])#appends 3 board values to the value list
         if values[0]==values[1]==values[2]:#checks whether all the values in the values list are the same
             return values[0]#returns the winner if the  values match
-#returns  the current player turn based on previous turn
+#returns  the current player's turn based on the previous turn
 def whose_turn(previous_turn):
     if previous_turn == player1: #returns player1 if previous turn is none or player2
         return player2
